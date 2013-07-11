@@ -8,13 +8,9 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
 
   //Reading content from index.html
-  var index_content;
-  data = fs.readFile('index.html','utf8', function(err,index_content) {
-    if (err) throw err;
-    return index_content;
-  });
+  var index_content = fs.readFileSync('index.html','utf8');
 
-  response.send('hello'+data);
+  response.send('hello'+ index_content);
 });
 
 var port = process.env.PORT || 5000;
