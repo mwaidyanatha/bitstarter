@@ -9,11 +9,12 @@ app.get('/', function(request, response) {
 
   //Reading content from index.html
   var index_content;
-  fs.readFile('index.html','utf8', function(err,index_content) {
+  data = fs.readFile('index.html','utf8', function(err,index_content) {
     if (err) throw err;
+    return index_content;
   });
 
-  response.send('hello'+index_content);
+  response.send('hello'+data);
 });
 
 var port = process.env.PORT || 5000;
